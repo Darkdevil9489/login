@@ -1,0 +1,49 @@
+{{> main}}
+  <body>
+    <div class="container">
+
+          <form action="/auth/register" class="sign-up-for" method="POST" style="position:relative; left:17rem; top:5rem; ">
+            <h2 class="title">Sign Up</h2>
+           {{#if msg}}
+          <p class="msg_type">{{msg}}</p>
+          {{/if}}
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Username" name="name" id="name"  />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-envelope"></i>
+              <input type="email" placeholder="Email" name="email" id="email" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" name="password" id="password" />
+            </div>
+                        <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="confirm_password" name="confirm_password" id="confirm_password" />
+            </div>
+
+            <input type="submit" value="Sign Up" class="btn solid" />
+<a href="/">Login</a>
+            <p class="social-text">Or Sign up with social platforms</p>
+            <div class="social-media">
+              <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-google"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </form>
+ 
+
+    </div>
+  </body>
+</html>
