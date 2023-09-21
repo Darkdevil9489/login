@@ -3,15 +3,21 @@ const app = express();
 const path = require('path');
 const  hbs = require('hbs');
 const mysql = require('mysql');
+const doenv = require("dotenv");
+const cookieParser = require("cookie-parser");
+
 const route = require('./router/route');
 const router = require('./router/auth');
 
+doenv.config({
+    path: "./.env",
+  });
 
 const connect = mysql.createConnection({
-host:'localhost',
-user: 'root',
-password:'',
-database:'test'
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASS,
+    database: process.env.DATABASE,
 })
 
 connect.connect((err)=>{
@@ -21,7 +27,7 @@ connect.connect((err)=>{
         console.log('connected to mysql')
     }
 });
-
+app.use(cookieParser());
 app.use(express.urlencoded({ extended :false}));
 
 const locate = path.join(__dirname,'public');
