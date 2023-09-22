@@ -3,7 +3,7 @@ const route = express.Router();
 const usercontroller = require('../controller/user');
 
 route.get(["/", "/login"],(req,res)=>{
-    res.status(200).render('login')
+    res.render('login')
 })
 
 route.get('/register',(req,res)=>{
@@ -16,16 +16,19 @@ route.get("/profile", usercontroller.isLoggedIn, (req, res) => {
       res.redirect("/login");
     }
   });
+
   route.get("/home", usercontroller.isLoggedIn, (req, res) => {
-    //console.log(req.name);
+    // console.log(req.name);
+    
+    // res.render('home')
     if (req.user) {
       res.render("home", { user: req.user });
     } else {
       res.redirect("/login");
     }
   });
-route.use((req,res)=>{
-    res.render('error')
-})
+// route.use((req,res)=>{
+//     res.status(404).render('error')
+// })
 
 module.exports=route;
